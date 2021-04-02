@@ -1,0 +1,45 @@
+<h2 matDialogTitle>{{ transaction ? 'Edit transaction (' + transaction.id + ')' : 'Add transaction' }}</h2>
+
+<form mat-dialog-content [formGroup]="formGroup" autocomplete="off">
+  <mat-form-field>
+    <mat-label>Type</mat-label>
+    <mat-select required formControlName="type">
+      <mat-option *ngFor="let type of types" [value]="type">{{ type }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Date</mat-label>
+    <input required matInput formControlName="date" [matDatepicker]="datePicker">
+    <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+    <mat-datepicker #datePicker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Value</mat-label>
+    <span matPrefix>£&nbsp;</span>
+    <input type="number" required formControlName="value" matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Cashflow</mat-label>
+    <span matPrefix>£&nbsp;</span>
+    <input type="number" readonly formControlName="cashflow" matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Security</mat-label>
+    <input autocomplete="off" type="text" formControlName="security" matInput>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Shares</mat-label>
+    <input type="number" formControlName="shares" matInput>
+  </mat-form-field>
+</form>
+
+<div mat-card-actions align="end">
+  <button mat-button (click)="cancel()" color="warn"><mat-icon>cancel</mat-icon> Cancel</button>
+  <button mat-button (click)="clear()" color="warn"><mat-icon>clear</mat-icon> Clear</button>
+  <button mat-button [disabled]="formGroup.invalid" (click)="ok()" color="primary"><mat-icon>check</mat-icon> OK</button>
+</div>

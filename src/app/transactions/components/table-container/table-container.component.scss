@@ -1,0 +1,43 @@
+:host {
+  display: block;
+
+  height: calc(100% - 48px);
+  padding: 24px;
+
+  overflow: hidden;
+
+  .table-container {
+    height: 100%;
+    overflow: auto;
+
+    .mat-table {
+      table-layout: fixed;
+      width: 100%;
+
+      .mat-row {
+        .mat-column-cashflow {
+          .positive {
+            color: green;
+          }
+
+          .negative {
+            color: red;
+          }
+        }
+
+        .mat-column-actions {
+          width: 40px;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+      }
+    }
+  }
+
+  .mat-fab {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    z-index: 999;
+  }
+}
